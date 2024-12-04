@@ -38,7 +38,7 @@ def dept_table():
         print("Department table successfully created.")
     except Exception as e:
         print("Database Error",e)
-        print("Please try again")
+        print("Please try again!!")
         dept_table()
 
 def dept_data():
@@ -55,7 +55,7 @@ def dept_data():
 
     except Exception as e:
         print("Database Error:",e)
-        print("Please try again")
+        print("Please try again!!")
     
 
 #salary table
@@ -65,7 +65,7 @@ def sal_table():
         mycursor.execute('''create table salary(Grade varchar(1) primary key,bas_sal int(6));''')
     except Exception as e:
         print("Database Error:",e)
-        print("Please try again")
+        print("Please try again!!")
 
 
       
@@ -161,13 +161,13 @@ def ADD_EMP():
         count1 = mycursor.rowcount
         Emp_id = "E00"+str(count+count1+1)
 
-        first_name = input("Enter the fist name of new employee ")
-        last_name = input("Enter the last name of new employee ")
-        Father_Spouse_Name = input("Enter name of father or spouse  new employee ")
+        first_name = input("Enter the fist name of new employee: ")
+        last_name = input("Enter the last name of new employee: ")
+        Father_Spouse_Name = input("Enter name of father or spouse of new employee: ")
 
-        Date_of_Birth = input("Enter Date of Birth of new employee(YYYY-MM-DD) ")
-        GradauteUG_PG = input("Enter either UG or PG  new employee ")
-        Department = input("Enter Employee's department name( like Medical, Admin ,Social Science, Maths ) ")
+        Date_of_Birth = input("Enter Date of Birth of new employee(YYYY-MM-DD): ")
+        GradauteUG_PG = input("Enter either UG or PG  new employee: ")
+        Department = input("Enter Employee's department name( like Medical, Admin ,Social Science, Maths ): ")
         mycursor.execute("SELECT * from emp_dept where dept_name = '{}'". format(Department))     
         data1 = mycursor.fetchone()
         if data1 is None:
@@ -175,24 +175,24 @@ def ADD_EMP():
             return  # Exit the function or handle the error accordingly
         else:
             dept_id = data1[0]
-        contact_num = int(input("Enter Employee's 10 digit contact number "))
-        Joining_Date = input("Enter Employee's joining date(YYYY-MM-DD) ")
-        Aadhar_num = int(input("Enter Employee's aadhar number "))
-        Address = input("Enter Employee's address ")
-        designation = input("Enter Employee's designation ")
+        contact_num = int(input("Enter Employee's 10 digit contact number: "))
+        Joining_Date = input("Enter Employee's joining date(YYYY-MM-DD): ")
+        Aadhar_num = int(input("Enter Employee's aadhar number: "))
+        Address = input("Enter Employee's address: ")
+        designation = input("Enter Employee's designation: ")
         def emailValid():
             import re
             regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-            email = input("Enter Employee's email ")
+            email = input("Enter Employee's email: ")
             if re.fullmatch(regex, email):
                 return email
             else:
-                print("You have entered a wrong format")
-                print("Please try again")
+                print("You have entered a wrong format!!")
+                print("Please try again!!")
                 return emailValid()
         email = emailValid()
-        regular = input("Is employee regular? (Y/N) ")
-        grade = input("Enter Employee's grade ")
+        regular = input("Is employee regular? (Y/N): ")
+        grade = input("Enter Employee's grade: ")
 
 
         # Define the SQL query and the values to be inserted
